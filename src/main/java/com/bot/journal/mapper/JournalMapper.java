@@ -7,10 +7,13 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
+import java.util.Random;
+
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface JournalMapper {
     @Mapping(target = "journalTitle", source = "journalEntry.title")
     @Mapping(target = "journalContent", source ="journalEntry.content" )
+    @Mapping(target = "date", expression = "java(journalEntry.getDate())")
     JournalRequest convertEntityToDto(JournalEntry journalEntry);
     @InheritInverseConfiguration
     JournalEntry convertDtoToEntity(JournalRequest journalRequest);
