@@ -1,6 +1,7 @@
 package com.bot.journal.controller;
 
 import com.bot.journal.entity.JournalEntry;
+import com.bot.journal.model.JournalRequest;
 import com.bot.journal.service.JournalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +21,9 @@ public class JournalEntryController {
         return journalService.getAllJournals();
     }
     @PostMapping
-    public void addJournal(@RequestBody JournalEntry journalEntry)
+    public void addJournal(@RequestBody JournalRequest journalRequest)
     {
-        journalService.addJournalEntry(journalEntry);
+        journalService.addJournalEntry(journalRequest);
 
     }
 }
